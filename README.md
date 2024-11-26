@@ -4,6 +4,7 @@ More documentation about specific services and components can be found in the fo
 
 - [deployment/](deployment/) - Provisioning, Deployment automation, how to's, playbooks and procedures
 - [services/api](services/api) - Data API and data model layer that powers all applications
+- [services/backup](services/backup) - Backup services for mongo and bucket storage, and monitoring
 - [services/web](services/web) - Web application and administration dashboard
 
 ## Quick Start

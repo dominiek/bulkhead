@@ -1,0 +1,12 @@
+FROM mongo:7.0.2-jammy
+
+RUN apt-get -y update --fix-missing
+RUN apt-get -y install curl bash cron python-is-python3
+
+RUN mkdir /workdir
+WORKDIR /workdir
+
+ADD mongo-backups /workdir/
+RUN ./install_gcloud_sdk.sh
+
+CMD ["./entrypoint.sh"]

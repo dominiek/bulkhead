@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mongo-backups-deployment
+  name: backup-mongo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mongo-backups
+      app: backup-mongo
   template:
     metadata:
       labels:
-        app: mongo-backups
+        app: backup-mongo
     spec:
       containers:
-        - image: dominiek/mongodb-backups
+        - image: gcr.io/bedrock-foundation/bedrock-core-services-backup-mongo
           imagePullPolicy: Always
           name: main
           # resources:
@@ -24,6 +24,6 @@ spec:
             - name: MONGO_HOST
               value: "mongo"
             - name: MONGO_DB
-              value: "bedrock_staging"
+              value: "bedrock_production"
             - name: BACKUPS_GS_BUCKET
-              value: "bedrock-staging-mongodb-backups"
+              value: "bedrock-foundation-mongodb-backups"

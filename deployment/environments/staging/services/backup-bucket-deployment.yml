@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bucket-storage-backups-deployment
+  name: backup-bucket
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: bucket-storage-backups
+      app: backup-bucket
   template:
     metadata:
       labels:
-        app: bucket-storage-backups
+        app: backup-bucket
     spec:
       containers:
-        - image: dominiek/bucket-storage-backups
+        - image: gcr.io/bedrock-foundation/bedrock-core-services-backup-bucket
           imagePullPolicy: Always
           name: main
           # resources:

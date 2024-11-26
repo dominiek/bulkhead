@@ -1,0 +1,16 @@
+FROM debian:10.13-slim
+
+RUN apt-get -y update --fix-missing
+RUN apt-get -y install apt-transport-https ca-certificates gnupg
+RUN apt-get -y install curl bash cron python make python-virtualenv
+
+RUN mkdir /workdir
+WORKDIR /workdir
+
+COPY ./backup-monitor/install_gcloud_sdk.sh /workdir
+RUN ./install_gcloud_sdk.sh
+
+ADD backup-monitor /workdir/
+RUN make env
+
+CMD ["./entrypoint.sh"]

@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backup-monitor-deployment
+  name: backup-monitor
 spec:
   replicas: 1
   selector:
@@ -13,7 +13,7 @@ spec:
         app: backup-monitor
     spec:
       containers:
-        - image: dominiek/backup-monitor
+        - image: gcr.io/bedrock-foundation/bedrock-core-services-backup-monitor
           imagePullPolicy: Always
           name: main
           # resources:
